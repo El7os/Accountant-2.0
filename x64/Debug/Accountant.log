@@ -1,12 +1,2 @@
-﻿  Encryptioner.cpp
-C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\EncryptionLayer\Source\Encryptioner.cpp(10,67): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\EncryptionLayer\Source\Encryptioner.cpp(21,5): warning C4996: 'AES_set_encrypt_key': Since OpenSSL 3.0
-C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\EncryptionLayer\Source\Encryptioner.cpp(22,5): warning C4996: 'AES_cbc_encrypt': Since OpenSSL 3.0
-C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\EncryptionLayer\Source\Encryptioner.cpp(27,5): warning C4996: 'AES_set_decrypt_key': Since OpenSSL 3.0
-C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\EncryptionLayer\Source\Encryptioner.cpp(28,5): warning C4996: 'AES_cbc_encrypt': Since OpenSSL 3.0
-  Main.cpp
-  Generating Code...
-Encryptioner.obj : error LNK2019: unresolved external symbol AES_set_encrypt_key referenced in function "private: void __cdecl Encryptioner_AES::AESEncrypt(unsigned char const *,int,unsigned char const *,unsigned char *,unsigned char *)" (?AESEncrypt@Encryptioner_AES@@AEAAXPEBEH0PEAE1@Z)
-Encryptioner.obj : error LNK2019: unresolved external symbol AES_set_decrypt_key referenced in function "private: void __cdecl Encryptioner_AES::AESDecrypt(unsigned char const *,int,unsigned char const *,unsigned char *,unsigned char *)" (?AESDecrypt@Encryptioner_AES@@AEAAXPEBEH0PEAE1@Z)
-Encryptioner.obj : error LNK2019: unresolved external symbol AES_cbc_encrypt referenced in function "private: void __cdecl Encryptioner_AES::AESDecrypt(unsigned char const *,int,unsigned char const *,unsigned char *,unsigned char *)" (?AESDecrypt@Encryptioner_AES@@AEAAXPEBEH0PEAE1@Z)
-C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\x64\Debug\Accountant.exe : fatal error LNK1120: 3 unresolved externals
+﻿  Main.cpp
+  Accountant.vcxproj -> C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\x64\Debug\Accountant.exe
