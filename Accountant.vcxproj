@@ -132,10 +132,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DatabaseLayer\Source\DatabaseController.cpp" />
+    <ClCompile Include="DatabaseLayer\SQLite\shell.c" />
+    <ClCompile Include="DatabaseLayer\SQLite\sqlite3.c" />
     <ClCompile Include="EncryptionLayer\Source\Encryptioner.cpp" />
     <ClCompile Include="Launcher\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DatabaseLayer\DatabaseController.h" />
+    <ClInclude Include="DatabaseLayer\SQLite\sqlite3.h" />
+    <ClInclude Include="DatabaseLayer\SQLite\sqlite3ext.h" />
     <ClInclude Include="EncryptionLayer\Encryptioner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
