@@ -1,6 +1,4 @@
-﻿  shell.c
-  sqlite3.c
-  Generating Code...
-  Main.cpp
-LINK : warning LNK4067: ambiguous entry point; selected 'mainCRTStartup'
+﻿  DatabaseController.cpp
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\DatabaseLayer\SQLite\sqlite3.h(272,31): warning C4099: 'sqlite3': type name first seen using 'class' now seen using 'struct'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\DatabaseLayer\DatabaseController.h(4,7): message : see declaration of 'sqlite3'
   Accountant.vcxproj -> C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\x64\Debug\Accountant.exe

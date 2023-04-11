@@ -1,20 +1,19 @@
 
 #include "..\EncryptionLayer\Encryptioner.h"
+#include "..\DatabaseLayer\DatabaseController.h"
 #include <iostream>
 
 int main()
 {
-	Encryptioner_AES Encryptioner;
+	DatabaseController& Controller = DatabaseController::GetController();
 
-	std::string Key = "Yahya";
-
-	std::string EncryptedData = Encryptioner.Encrypt("Benim Emin Yahya", Key);
-	std::string DecryptedData = Encryptioner.Decrypt(EncryptedData, Key);
-
-	std::cout << "Encryped Data : " << EncryptedData << std::endl;
-	std::cout << "Decryped Data : " << DecryptedData << std::endl;
 	
+
 	
+	std::filesystem::path Path("C:\\Users\\Pro_y\\Documents\\Github\\Accountant-2.0");
+	Controller.SetPath(Path);
+	DatabaseController::EConnectionResult Result = Controller.InitializeConnection();
+	std::cout << "Result : " << Result << std::endl;
 
 	return 0;
 }
