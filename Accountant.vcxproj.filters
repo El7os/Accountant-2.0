@@ -30,6 +30,9 @@
     <ClCompile Include="DatabaseLayer\Source\DatabaseController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PersistanceLayer\Config\Initialization\Source\InitParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EncryptionLayer\Encryptioner.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DatabaseLayer\DatabaseController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PersistanceLayer\Config\Initialization\IniParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
