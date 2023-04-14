@@ -1,6 +1,7 @@
 #pragma once
 
-#define INI_FILE_NAME "Accountant"
+#include <vector>
+#include "IniData.h"
 
 class IniParser
 {
@@ -11,14 +12,7 @@ class IniParser
 		return Parser;
 	}
 
-
-	//retreive data
-	//parse data
-
-
-
-
-
+	int Parse(const std::string& FileName, IniData& Data);
 
 private:
 

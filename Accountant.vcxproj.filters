@@ -21,9 +21,24 @@
     <ClCompile Include="ServicesLayer\Launcher\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\INIReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PersistanceLayer\Config\Initialization\Source\IniData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PersistanceLayer\Config\Initialization\Source\SectionData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PersistanceLayer\Config\Initialization\IniData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PersistanceLayer\Config\Initialization\SectionData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

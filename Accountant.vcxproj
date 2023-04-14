@@ -135,11 +135,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\INIReader.cpp" />
+    <ClCompile Include="PersistanceLayer\Config\Initialization\Source\IniData.cpp" />
     <ClCompile Include="PersistanceLayer\Config\Initialization\Source\InitParser.cpp" />
+    <ClCompile Include="PersistanceLayer\Config\Initialization\Source\SectionData.cpp" />
     <ClCompile Include="ServicesLayer\Launcher\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PersistanceLayer\Config\Initialization\IniData.h" />
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniParser.h" />
+    <ClInclude Include="PersistanceLayer\Config\Initialization\SectionData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
