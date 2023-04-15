@@ -2,42 +2,48 @@
 #include <string>
 #include <set>
 #include <map>
+#include <filesystem>
 
-//Read an INI file into easy-to-access name/value pairs. (Note that I've gone
-// for simplicity here rather than speed, but it should be pretty decent.)
+
+/*Reads an .ini file into easy-to-access name/value pairs.*/
 class IniReader
 {
 public:
 
-    // Construct INIReader and parse given filename. See ini.h for more info
-    // about the parsing.
-    IniReader(const std::string& filename);
+    /*
+    * Constructs an IniReader and parse the File immediately
+    * @param File - Indicates the .ini file that about to be parsed.
+    */
+    IniReader(const std::filesystem::path& File);
 
     ~IniReader();
 
-    // Return the result of ini_parse(), i.e., 0 on success, line number of
-    // first error on parse error, or -1 on file open error.
+    /*
+    * Gives the encountered pars error if it is exists. 0 on success, line number of
+    * first error on parse error, or -1 on file open error.
+    * @return - Parse error
+    */
     inline int ParseError() const
     {
         return _error;
     }
 
     // Get a string value from INI file, returning default_value if not found.
-    std::string Get(const std::string& section, const std::string& name, const std::string& default_value);
+    bool Get(const std::string& section, const std::string& name, std::string& OutData);
 
     // Get an integer (long) value from INI file, returning default_value if
     // not found or not a valid integer (decimal "1234", "-1234", or hex "0x4d2").
-    long GetInteger(const std::string& section, const std::string& name, long default_value);
+    bool GetInteger(const std::string& section, const std::string& name, long& OutData);
 
     // Get a real (floating point double) value from INI file, returning
     // default_value if not found or not a valid floating point value
     // according to strtod().
-    double GetReal(const std::string& section, const std::string& name, double default_value);
+    bool GetFloat(const std::string& section, const std::string& name, double& OutData);
 
     // Get a boolean value from INI file, returning default_value if not found or if
     // not a valid true/false value. Valid true values are "true", "yes", "on", "1",
     // and valid false values are "false", "no", "off", "0" (not case sensitive).
-    bool GetBoolean(const std::string& section, const std::string& name, bool default_value);
+    bool GetBoolean(const std::string& section, const std::string& name, bool& OutData);
 
     // Returns all the section names from the INI file, in alphabetical order, but in the
     // original casing

@@ -2,9 +2,9 @@
 #include "..\IniReaderHelperLibrary.h"
 #include <algorithm>
 
-IniReader::IniReader(const std::string& filename)
+IniReader::IniReader(const std::filesystem::path& File)
 {
-	_error = IniReaderHelperLibrary::ini_parse(filename.c_str(), ValueHandler, this);
+	_error = IniReaderHelperLibrary::ini_parse(File.string().c_str(), ValueHandler, this);
 }
 
 IniReader::~IniReader()
@@ -14,42 +14,88 @@ IniReader::~IniReader()
 		delete fieldSetsIt->second;
 }
 
-std::string IniReader::Get(const std::string& section, const std::string& name, const std::string& default_value)
+bool IniReader::Get(const std::string& section, const std::string& name, std::string& OutData)
 {
 	std::string key = MakeKey(section, name);
-	return _values.count(key) ? _values[key] : default_value;
-}
-
-long IniReader::GetInteger(const std::string& section, const std::string& name, long default_value)
-{
-	std::string valstr = Get(section, name, "");
-	const char* value = valstr.c_str();
-	char* end;
-	
-	long n = strtol(value, &end, 0);
-	return end > value ? n : default_value;
-}
-
-double IniReader::GetReal(const std::string& section, const std::string& name, double default_value)
-{
-	std::string valstr = Get(section, name, "");
-	const char* value = valstr.c_str();
-	char* end;
-	double n = strtod(value, &end);
-	return end > value ? n : default_value;
-}
-
-bool IniReader::GetBoolean(const std::string& section, const std::string& name, bool default_value)
-{
-	std::string valstr = Get(section, name, "");
-	// Convert to lower case to make string comparisons case-insensitive
-	std::transform(valstr.begin(), valstr.end(), valstr.begin(), ::tolower);
-	if (valstr == "true" || valstr == "yes" || valstr == "on" || valstr == "1")
+	if (_values.count(key))
+	{
+		OutData = _values[key];
 		return true;
-	else if (valstr == "false" || valstr == "no" || valstr == "off" || valstr == "0")
+	}
+	else
+		return false;
+}
+
+bool IniReader::GetInteger(const std::string& section, const std::string& name, long& OutData)
+{
+	std::string Value;
+	bool Succession = Get(section, name, Value);
+	if (!Succession)
 		return false;
 	else
-		return default_value;
+	{
+		const char* RawValue = Value.c_str();
+		char* End;
+		long Integer = strtol(RawValue, &End, 0);
+		if (End > Value)
+		{
+			OutData = Integer;
+			return true;
+		}
+		else
+			return false;
+	}
+}
+
+bool IniReader::GetFloat(const std::string& section, const std::string& name, double& OutData)
+{
+	std::string Value;
+	bool Succession = Get(section, name, Value);
+	if (!Succession)
+		return false;
+	else
+	{
+		const char* RawValue = Value.c_str();
+		char* End;
+		double Float = strtod(RawValue, &End);
+		if (End > Value)
+		{
+			OutData = Float;
+			return true;
+		}
+		else
+			return false;
+	}
+}
+
+bool IniReader::GetBoolean(const std::string& section, const std::string& name, bool& OutData)
+{
+	std::string Value;
+	bool Succession = Get(section, name, Value);
+	if (!Succession)
+		return false;
+	else
+	{
+		std::transform(Value.begin(), Value.end(), Value.begin(), tolower);
+		if (Value == "true" &&
+			Value == "yes" &&
+			Value == "on" &&
+			Value == "1")
+		{
+			OutData = true;
+			return true;
+		}
+		else if (Value == "false" &&
+			Value == "off" &&
+			Value == "no" &&
+			Value == "1")
+		{
+			OutData = false;
+			return true;
+		}
+		else
+			return false;
+	}
 }
 
 std::set<std::string> IniReader::GetFields(const std::string& section) const
