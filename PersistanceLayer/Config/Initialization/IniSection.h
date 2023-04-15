@@ -6,7 +6,10 @@
 
 enum class EIniDataType : uint8_t
 {
-
+	EIniDataType_String = 0,
+	EIniDataType_Float,
+	EIniDataType_Int,
+	EIniDataType_Bool
 };
 struct IniProperty
 {

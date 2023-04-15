@@ -5,6 +5,7 @@
 #include <Windows.h>
 
 
+
 int GetIniData(IniData& OutIniData)
 {
 	std::filesystem::path Directory;
@@ -25,7 +26,7 @@ int GetIniData(IniData& OutIniData)
 			std::cout << '\t' << Field << std::endl;
 		}
 	}
-	
+
 	return Reader.ParseError();
 }
 

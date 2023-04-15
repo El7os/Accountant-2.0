@@ -1,7 +1,4 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1101,5): warning MSB8027: Two or more files with the name of INIReader.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are PersistanceLayer\Config\Initialization\External Libraries\INIReader\INIReader.cpp, PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp.
-  IniReader.cpp
-C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReaderHelperLibrary.h(106,9): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  Main.cpp
-  Generating Code...
-x64\Debug\IniReader.obj : warning LNK4042: object specified more than once; extras ignored
+﻿  IniReader.cpp
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(178,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(188,9): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   Accountant.vcxproj -> C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\x64\Debug\Accountant.exe
