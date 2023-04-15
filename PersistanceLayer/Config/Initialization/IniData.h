@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "SectionData.h"
+#include "IniSection.h"
 
 class IniData
 {
@@ -9,11 +9,11 @@ public:
 
 	void EndBulk()
 	{
-		for (IniSectionData& Section : Sections)
+		for (IniSection& Section : Sections)
 			Section.EndBulk();
 		Sections.shrink_to_fit();
 	}
 
 
-	std::vector<IniSectionData> Sections;
+	std::vector<IniSection> Sections;
 };

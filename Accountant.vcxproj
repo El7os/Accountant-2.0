@@ -136,15 +136,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\INIReader.cpp" />
-    <ClCompile Include="PersistanceLayer\Config\Initialization\Source\IniData.cpp" />
-    <ClCompile Include="PersistanceLayer\Config\Initialization\Source\InitParser.cpp" />
-    <ClCompile Include="PersistanceLayer\Config\Initialization\Source\SectionData.cpp" />
+    <ClCompile Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp" />
+    <ClCompile Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReaderHelperLibrary.cpp" />
     <ClCompile Include="ServicesLayer\Launcher\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h" />
+    <ClInclude Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReaderHelperLibrary.h" />
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniData.h" />
-    <ClInclude Include="PersistanceLayer\Config\Initialization\IniParser.h" />
-    <ClInclude Include="PersistanceLayer\Config\Initialization\SectionData.h" />
+    <ClInclude Include="PersistanceLayer\Config\Initialization\IniSection.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

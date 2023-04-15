@@ -77,9 +77,6 @@ extern "C" {
 #define INI_MAX_LINE 200
 #endif
 
-
-
-
 #include <ctype.h>
 #include <string.h>
 
