@@ -48,6 +48,10 @@ struct IniProperty
 		return dynamic_cast<const T*>(Data);
 	}
 
+	inline bool operator==(const IniProperty& Other) const
+	{
+		return Other.Name == Name;
+	}
 	std::string Name;
 
 	EIniDataType Type;
@@ -77,6 +81,10 @@ public:
 	{
 	}
 
+	inline bool operator==(const IniSection& Other) const
+	{
+		return Other.Name == Name;
+	}
 
 	std::string Name;
 	std::unordered_set<IniProperty> Properties;

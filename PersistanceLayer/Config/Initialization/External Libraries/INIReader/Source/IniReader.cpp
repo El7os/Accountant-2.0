@@ -42,7 +42,8 @@ int8_t IniReader::ParseFile(const std::filesystem::path& File, std::vector<int>&
 		{
 			if (!CurrentSection.Properties.size())
 			{
-				//Data.Sections.insert(std::move(CurrentSection));
+				Data.Sections.insert(std::move(CurrentSection));
+				
 			}
 			CurrentSection = IniSection(NormalizedLine.substr(1, strlen(NormalizedLine.c_str()) - 2));
 			continue;
@@ -54,7 +55,7 @@ int8_t IniReader::ParseFile(const std::filesystem::path& File, std::vector<int>&
 			ProblematicLines.push_back(LineIndex);
 			continue;
 		}
-		//CurrentSection.Properties.insert(MakeProperty(Property));
+		CurrentSection.Properties.insert(MakeProperty(Property));
 
 	}
 	return 0;
