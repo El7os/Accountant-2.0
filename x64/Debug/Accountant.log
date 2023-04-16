@@ -1,4 +1,2 @@
 ﻿  IniReader.cpp
-C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(178,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(188,9): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   Accountant.vcxproj -> C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\x64\Debug\Accountant.exe

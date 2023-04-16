@@ -2,47 +2,17 @@
 #include <string>
 #include <set>
 #include <map>
+#include <vector>
 #include <filesystem>
 
-/*
-Nonzero to allow multi-line value parsing, in the style of Python's
-ConfigParser. If allowed, ini_parse() will call the handler with the same
-name for each subsequent line parsed.
-*/
-#ifndef INI_ALLOW_MULTILANE
-#define INI_ALLOW_MULTILANE 1
-#endif
+#include "..\..\IniData.h"
 
-/*
-Nonzero to allow a UTF-8 BOM sequence (0xEF 0xBB 0xBF) at the start of
-the file. See http://code.google.com/p/inih/issues/detail?id=21
-*/
-#ifndef INI_ALLOW_BOM
-#define INI_ALLOW_BOM 1
-#endif
 
-/* Nonzero to use stack, zero to use heap (malloc/free). */
-#ifndef INI_USE_STACK
-#define INI_USE_STACK 1
-#endif
-
-/* Stop parsing on first error (default is to keep parsing). */
-#ifndef INI_STOP_ON_FIRST_ERROR
-#define INI_STOP_ON_FIRST_ERROR 0
-#endif
-
-/* Maximum line length for any line in INI file. */
-#ifndef INI_MAX_LINE
-#define INI_MAX_LINE 200
-#endif
-
-#if !INI_USE_STACK
-#include <stdlib.h>
-#endif
-
-#define MAX_SECTION 50
-#define MAX_NAME 50
-
+//struct IniData;
+//struct IniSection;
+//struct IniProperty;
+//
+//enum EIniDataType;
 /*Reads an .ini file into easy-to-access name/value pairs.*/
 class IniReader
 {
@@ -65,108 +35,36 @@ public:
 
     ~IniReader();
 
-    /*
-    * Gives the encountered pars error if it is exists. 0 on success, line number of
-    * first error on parse error, or -1 on file open error.
-    * @return - Parse error
-    */
-    inline int ParseError() const
-    {
-        return _error;
-    }
+    std::vector<std::string> GetSectionNames() const;
 
-    /*
-    * Gets a string value from .ini file if it is exists.
-    * @param Section - The section where the field is located.
-    * @param Name - Name of the field which is looked for.
-    * @param OutData - Value of the field is written into this string if it is found
-    * @return Returns true if the operation is managed successfuly, false otherwise.
-    */
-    bool Get(const std::string& Section, const std::string& Name, std::string& OutData);
+    std::vector<std::string> GetFieldNames(const std::string& SectionName) const;
 
-    /*
-    * Gets an integer (long) value from .ini file if it is exists
-    * an valid (decimal or hex)
-    * @param Section - The section where the field is located.
-    * @param Name - Name of the field which is looked for.
-    * @param OutData - Value of the field is written into this long if it is found
-    * @return Returns true if the operation is managed successfuly, false otherwise.
-    */
-    bool GetInteger(const std::string& Section, const std::string& Name, long& OutData);
+    inline IniData& GetData();
 
-    /*
-    * Gets an float value from .ini file if it is exists and valid.
-    * @param Section - The section where the field is located.
-    * @param Name - Name of the field which is looked for.
-    * @param OutData - Value of the field is written into this double if it is found
-    * @return Returns true if the operation is managed successfuly, false otherwise.
-    */
-    bool GetFloat(const std::string& Section, const std::string& Name, double& OutData);
+    IniSection* GetSection(const std::string& SectionName) const;
 
-    /*
-    * Gets a boolean value from .ini file if it is exists and valid.
-    * "True", "Yes", "On" and "1" values are accepted as true and
-    * "False", "No", "Off" and "0" values are accepted as false (not case sensitive).
-    * @param Section - The section where the field is located.
-    * @param Name - Name of the field which is looked for.
-    * @param OutData - Value of the field is written into this bool if it is found
-    * @return Returns true if the operation is managed successfuly, false otherwise.
-    */
-    bool GetBoolean(const std::string& Section, const std::string& Name, bool& OutData);
-
-    /*
-    * Returns all the section names in the .ini file, in alphabetical order, but in the orginal casing.
-    * @return A set that contains all sections in the .ini file.
-    */
-    inline const std::set<std::string>& GetSections() const
-    {
-        return _sections;
-    }
-
-    /*
-    * Returns all the filed names in the .ini file, in alphhabetical order but in the orginal
-    * casing.
-    * @param Section - The name of the section which is the names of its fields wanted.
-    * @return Returns the names of the fields in the specified Section. Returns an empty set
-    *         if the field name is unknown.
-    */
-    std::set<std::string> GetFields(const std::string& Section) const;
+    inline const std::vector<int>& GetProblematicLines() const;
 
 private:
 
-    static std::string MakeKey(const std::string& Section, const std::string& Name);
+    std::string NormalizeLine(const std::string& Line) const;
 
-    static int ValueHandler(void* User, const char* Section, const char* Name, const char* Value);
+    bool IsCommentLine(const std::string& Line) const;
 
-    static void RStrip(char* String);
+    bool IsSectionLine(const std::string& Line) const;
 
-    static char* LSkip(char* String);
+    bool ParseProperty(const std::string& Line, std::pair<std::string, std::string>& OutProperty) const;
 
-    static char* FindCharOrComment(const char* String, char Char);
+    bool StringToBool(const std::string& String) const;
 
-    static char* SafeStringCopy(char* Destination, const char* Source, size_t Size);
+    IniProperty MakeProperty(const std::pair<std::string, std::string>& RawData) const;
 
-    static int Parse(
-        const char* FileName,
-        int (*handler)(void* user, const char* section, const char* name, const char* value),
-        void* user);
+    EIniDataType DetermineType(const std::string& Line) const;
 
-    static int ini_parse_file(
-        FILE* file,
-        int (*handler)(void*, const char*, const char*, const char*),
-        void* user);
+    int8_t ParseFile(const std::filesystem::path& File, std::vector<int>& OutProblematicLines);
+    
+    std::vector<int> ProblematicLines;
 
-    static inline bool CheckUTF8Boom(const char* Content);
+    IniData Data;
 
-    static inline bool IsCommentLine(const char* Line);
-
-    static void NormalizeLine(char*& Line);
-
-    int _error;
-
-    std::map<std::string, std::string> _values;
-
-    std::set<std::string> _sections;
-
-    std::map<std::string, std::set<std::string>*> _fields;
 };
