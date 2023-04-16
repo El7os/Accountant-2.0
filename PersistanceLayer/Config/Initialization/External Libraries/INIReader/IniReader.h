@@ -138,9 +138,9 @@ private:
 
     static int ValueHandler(void* User, const char* Section, const char* Name, const char* Value);
 
-    static char* RStrip(char* String);
+    static void RStrip(char* String);
 
-    static char* LSkip(const char* String);
+    static char* LSkip(char* String);
 
     static char* FindCharOrComment(const char* String, char Char);
 
@@ -155,6 +155,12 @@ private:
         FILE* file,
         int (*handler)(void*, const char*, const char*, const char*),
         void* user);
+
+    static inline bool CheckUTF8Boom(const char* Content);
+
+    static inline bool IsCommentLine(const char* Line);
+
+    static void NormalizeLine(char*& Line);
 
     int _error;
 

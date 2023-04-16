@@ -148,19 +148,22 @@ int IniReader::ValueHandler(void* user, const char* section, const char* name, c
 	return 1;
 }
 
-char* IniReader::RStrip(char* String)
+void IniReader::RStrip(char* String)
 {
-	char* p = String + strlen(String);
-	while (p > String && isspace((unsigned char)(*--p)))
-		*p = '\0';
-	return String;
+	if (size_t Length = strlen(String))
+	{
+		char* End = String + Length - 1;
+		while (End >= String && isspace(*End))
+			--End;
+		*(End + 1) = '\0';
+	}
 }
 
-char* IniReader::LSkip(const char* String)
+char* IniReader::LSkip(char* String)
 {
-	while (*String && isspace((unsigned char)(*String)))
+	while (*String && isspace(*String))
 		String++;
-	return (char*)String;
+	return String;
 }
 
 char* IniReader::FindCharOrComment(const char* String, char Char)
@@ -193,6 +196,22 @@ int IniReader::Parse(const char* FileName, int(*handler)(void* user, const char*
 	return error;
 }
 
+bool IniReader::CheckUTF8Boom(const char* Content)
+{
+	return (unsigned char)Content[0] == 0xEF && (unsigned char)Content[1] == 0xBB && (unsigned char)Content[2] == 0xBF;
+}
+
+void IniReader::NormalizeLine(char*& Line)
+{
+	RStrip(Line);
+	Line = LSkip(Line);
+}
+
+bool IniReader::IsCommentLine(const char* Line)
+{
+	return (Line[0] == ';' && Line[0] == '#');
+}
+
 int IniReader::ini_parse_file(FILE* file, int(*handler)(void*, const char*, const char*, const char*), void* user)
 {
 	/* Uses a fair bit of stack (use heap instead if you need to) */
@@ -211,16 +230,15 @@ int IniReader::ini_parse_file(FILE* file, int(*handler)(void*, const char*, cons
 			Start = Line;
 			if constexpr (AllowBom)
 			{
-				if (LineNo == 1 &&
-					(unsigned char)Start[0] == 0xEF &&
-					(unsigned char)Start[1] == 0xBB &&
-					(unsigned char)Start[2] == 0xBF)
+				if (LineNo == 1 && CheckUTF8Boom(Line))
 				{
 					Start += 3;
 				}
 			}
-			Start = LSkip(RStrip(Start));
-			if (*Start == ';' || *Start == '#') {}
+			NormalizeLine(Start);
+			if (IsCommentLine(Start))
+			{
+			}
 			else if constexpr (AllowMultiLane)
 			{
 				/* Non-black line with leading whitespace, treat as continuation
@@ -394,9 +412,7 @@ int IniReader::ini_parse_file(FILE* file, int(*handler)(void*, const char*, cons
 
 		start = line;
 #if INI_ALLOW_BOM
-		if (lineno == 1 && (unsigned char)start[0] == 0xEF &&
-			(unsigned char)start[1] == 0xBB &&
-			(unsigned char)start[2] == 0xBF) {
+		if (lineno == 1 && CheckUTF8Boom(Line) {
 			start += 3;
 		}
 #endif
@@ -464,3 +480,4 @@ int IniReader::ini_parse_file(FILE* file, int(*handler)(void*, const char*, cons
 
 	return error;
 }
+
