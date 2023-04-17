@@ -1,9 +1,8 @@
 #include "..\IniReader.h"
 
-//#include "..\..\..\IniData.h"
-//#include "..\..\..\IniSection.h"
 
 
+#include <iostream>
 #include <fstream>
 #include <algorithm>
 #include <new>
@@ -35,28 +34,39 @@ int8_t IniReader::ParseFile(const std::filesystem::path& File, std::vector<int>&
 		++LineIndex;
 		const std::string& NormalizedLine = NormalizeLine(Line);
 		
-		if (NormalizedLine.empty() && IsCommentLine(NormalizedLine))
+
+		if (IsTrivialLine(NormalizedLine))
 			continue;
+		std::cout << std::format("[LINE][{}] : {}", LineIndex, NormalizedLine) << std::endl;
 
 		if (IsSectionLine(NormalizedLine))
 		{
-			if (!CurrentSection.Properties.size())
+			std::cout << std::format("[NewSectionDetected][{}] : Section Name = {}", LineIndex, NormalizedLine.substr(1, strlen(NormalizedLine.c_str()) - 2)) << std::endl;
+			if (CurrentSection.Properties.size())
 			{
+				std::cout << std::format("[ASectionInsterted][{}] : Section Name = {} | Property Count = {}", LineIndex, CurrentSection.Name, CurrentSection.Properties.size()) << std::endl;
 				Data.Sections.insert(std::move(CurrentSection));
-				
 			}
 			CurrentSection = IniSection(NormalizedLine.substr(1, strlen(NormalizedLine.c_str()) - 2));
 			continue;
 		}
 
 		std::pair<std::string, std::string> Property;
-		if (ParseProperty(NormalizedLine, Property))
+		if (!ParseProperty(NormalizedLine, Property))
 		{
+			std::cout << std::format("[AProblematicLineDetected][{}] : {}", LineIndex, NormalizedLine) << std::endl;
 			ProblematicLines.push_back(LineIndex);
 			continue;
 		}
-		CurrentSection.Properties.insert(MakeProperty(Property));
+		std::cout << std::format("[NewProperty][{}][{}] : '{}' = '{}' ", LineIndex, CurrentSection.Name, Property.first, Property.second) << std::endl;
 
+		CurrentSection.Properties.insert(MakeProperty(Property));
+	}
+
+	if (CurrentSection.Properties.size())
+	{
+		std::cout << std::format("[ASectionInsterted][{}] : Section Name = {} | Property Count = {}", LineIndex, CurrentSection.Name, CurrentSection.Properties.size()) << std::endl;
+		Data.Sections.insert(std::move(CurrentSection));
 	}
 	return 0;
 }
@@ -107,12 +117,12 @@ IniSection* IniReader::GetSection(const std::string& SectionName) const
 bool IniReader::ParseProperty(const std::string& Line, std::pair<std::string, std::string>& OutProperty) const
 {
 	size_t Length = strlen(Line.c_str());
-	size_t AssignmentLocation = Line.find('=', Length);
+	size_t AssignmentLocation = Line.find('=', 0);
 	if (AssignmentLocation == std::string::npos)
 		return false;
 
-	OutProperty.first = Line.substr(0, AssignmentLocation - 1);
-	OutProperty.second = Line.substr(AssignmentLocation + 1, Length - 1);
+	OutProperty.first = NormalizeLine(Line.substr(0, AssignmentLocation - 1));
+	OutProperty.second = NormalizeLine(Line.substr(AssignmentLocation + 1, Length - 1));
 
 	return true;
 }
@@ -182,4 +192,9 @@ bool IniReader::StringToBool(const std::string& String) const
 		return false;
 	else
 		return true;
+}
+
+bool IniReader::IsTrivialLine(const std::string& Line) const
+{
+	return (IsCommentLine(Line) || Line.find_first_not_of(" \0\n") == std::string::npos);
 }

@@ -18,15 +18,6 @@ class IniReader
 {
 public:
 
-    static constexpr bool AllowMultiLane   = 1;
-    static constexpr bool AllowBom         = 1;
-    static constexpr bool UseStack         = 1;
-    static constexpr bool StopOnFirstError = 0;
-
-    static constexpr unsigned int MaxLine    = 200U;
-    static constexpr unsigned int MaxSection = 50U;
-    static constexpr unsigned int MaxName    = 50U;
-
     /*
     * Constructs an IniReader and parse the File immediately
     * @param File - Indicates the .ini file that about to be parsed.
@@ -51,11 +42,14 @@ private:
 
     bool IsCommentLine(const std::string& Line) const;
 
+    bool IsTrivialLine(const std::string& Line) const;
+
     bool IsSectionLine(const std::string& Line) const;
 
     bool ParseProperty(const std::string& Line, std::pair<std::string, std::string>& OutProperty) const;
 
     bool StringToBool(const std::string& String) const;
+
 
     IniProperty MakeProperty(const std::pair<std::string, std::string>& RawData) const;
 
