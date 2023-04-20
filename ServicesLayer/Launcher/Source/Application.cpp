@@ -4,9 +4,9 @@
 #include <iostream>
 #include <Windows.h>
 
-Application::Application(const std::filesystem::path& File)
+Application::Application()
 {
-	IniData Data = GetIniConfig(File);
+	IniData Data = GetIniConfig(GetIniPath());
 	std::cout << std::format("The name of the .ini file : {}", Data.Name) << std::endl;
 	for (const IniSection& Section : Data.Sections)
 	{
@@ -16,16 +16,22 @@ Application::Application(const std::filesystem::path& File)
 			std::cout << std::format("\t\t {}", Property.Name) << std::endl;
 		}
 	}
+	
 }
 
 IniData Application::GetIniConfig(const std::filesystem::path& File)
 {
 	// To Do : Handle the case where the readers fail in its mission.
 	IniReader Reader(File);
+	std::cout << "Problematic Lines" << std::endl;
+	for (int i : Reader.GetProblematicLines())
+		std::cout << std::format("\tProblematic line : {}", i);
+
+	std::cout << std::endl;
 	return Reader.GetData();
 }
 
-std::filesystem::path GetIniPath()
+std::filesystem::path Application::GetIniPath()
 {
 	std::filesystem::path Directory;
 #ifdef _WIN32

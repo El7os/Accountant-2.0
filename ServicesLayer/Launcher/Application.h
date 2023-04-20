@@ -7,7 +7,7 @@ class Application final
 {
 public:
 
-	Application(const std::filesystem::path& File);
+	Application();
 
 
 private:

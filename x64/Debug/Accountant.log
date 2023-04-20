@@ -2,5 +2,4 @@
   Main.cpp
   Application.cpp
   Generating Code...
-Application.obj : error LNK2019: unresolved external symbol "public: struct IniData & __cdecl IniReader::GetData(void)" (?GetData@IniReader@@QEAAAEAUIniData@@XZ) referenced in function "private: struct IniData __cdecl Application::GetIniConfig(class std::filesystem::path const &)" (?GetIniConfig@Application@@AEAA?AUIniData@@AEBVpath@filesystem@std@@@Z)
-C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\x64\Debug\Accountant.exe : fatal error LNK1120: 1 unresolved externals
+  Accountant.vcxproj -> C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\x64\Debug\Accountant.exe

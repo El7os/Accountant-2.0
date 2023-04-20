@@ -6,10 +6,14 @@
 #include "..\..\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h"
 #include <filesystem>
 #include <Windows.h>
+#include "Application.h"
 
 
 int main()
 {
-	
+	Application App;
+
+	std::string Yahya("Yahya");
+	std::cout << std::format("{} / {}", strlen(Yahya.c_str()), Yahya.length());
 	return 0;
 }
