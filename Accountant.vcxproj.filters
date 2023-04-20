@@ -21,6 +21,9 @@
     <ClCompile Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ServicesLayer\Launcher\Source\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniData.h">
@@ -30,6 +33,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServicesLayer\Launcher\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
