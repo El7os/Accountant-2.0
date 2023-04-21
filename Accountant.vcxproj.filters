@@ -24,6 +24,12 @@
     <ClCompile Include="ServicesLayer\Launcher\Source\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PersistanceLayer\Database\External Libraries\SQLite\shell.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PersistanceLayer\Database\External Libraries\SQLite\sqlite3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniData.h">
@@ -36,6 +42,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ServicesLayer\Launcher\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PersistanceLayer\Database\External Libraries\SQLite\sqlite3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PersistanceLayer\Database\External Libraries\SQLite\sqlite3ext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

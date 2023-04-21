@@ -7,16 +7,6 @@
 Application::Application()
 {
 	IniData Data = GetIniConfig(GetIniPath());
-	std::cout << std::format("The name of the .ini file : {}", Data.Name) << std::endl;
-	for (const IniSection& Section : Data.Sections)
-	{
-		std::cout << std::format("\t Section {} has {} property(s)", Section.Name, Section.Properties.size()) << std::endl;
-		for (const IniProperty& Property : Section.Properties)
-		{
-			std::cout << std::format("\t\t {}", Property.Name) << std::endl;
-		}
-	}
-	
 }
 
 IniData Application::GetIniConfig(const std::filesystem::path& File)

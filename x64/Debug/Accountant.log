@@ -1,5 +1,6 @@
-﻿  IniReader.cpp
-  Main.cpp
-  Application.cpp
+﻿  Application.cpp
+  shell.c
+  sqlite3.c
   Generating Code...
+LINK : warning LNK4067: ambiguous entry point; selected 'mainCRTStartup'
   Accountant.vcxproj -> C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\x64\Debug\Accountant.exe

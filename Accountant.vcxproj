@@ -136,6 +136,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp" />
+    <ClCompile Include="PersistanceLayer\Database\External Libraries\SQLite\shell.c" />
+    <ClCompile Include="PersistanceLayer\Database\External Libraries\SQLite\sqlite3.c" />
     <ClCompile Include="ServicesLayer\Launcher\Main.cpp" />
     <ClCompile Include="ServicesLayer\Launcher\Source\Application.cpp" />
   </ItemGroup>
@@ -143,6 +145,8 @@
     <ClInclude Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h" />
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniData.h" />
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniSection.h" />
+    <ClInclude Include="PersistanceLayer\Database\External Libraries\SQLite\sqlite3.h" />
+    <ClInclude Include="PersistanceLayer\Database\External Libraries\SQLite\sqlite3ext.h" />
     <ClInclude Include="ServicesLayer\Launcher\Application.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
