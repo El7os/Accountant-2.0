@@ -109,6 +109,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <ShowIncludes>true</ShowIncludes>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,16 +140,19 @@
     <ClCompile Include="PersistanceLayer\Database\External Libraries\SQLite\shell.c" />
     <ClCompile Include="PersistanceLayer\Database\External Libraries\SQLite\sqlite3.c" />
     <ClCompile Include="PersistanceLayer\Database\Source\DatabaseController.cpp" />
+    <ClCompile Include="PersistanceLayer\Database\Source\UserDatabaseController.cpp" />
     <ClCompile Include="ServicesLayer\Launcher\Main.cpp" />
     <ClCompile Include="ServicesLayer\Launcher\Source\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="External Libraries\Debug\Macros.h" />
     <ClInclude Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h" />
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniData.h" />
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniSection.h" />
     <ClInclude Include="PersistanceLayer\Database\DatabaseController.h" />
     <ClInclude Include="PersistanceLayer\Database\External Libraries\SQLite\sqlite3.h" />
     <ClInclude Include="PersistanceLayer\Database\External Libraries\SQLite\sqlite3ext.h" />
+    <ClInclude Include="PersistanceLayer\Database\UserDatabaseController.h" />
     <ClInclude Include="ServicesLayer\Launcher\Application.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

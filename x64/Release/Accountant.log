@@ -1,0 +1,297 @@
+﻿  Macros.cpp
+  IniReader.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\filesystem(13): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\any(13): warning STL4038: The contents of <any> are available only with C++17 or later.
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,50): error C2039: 'any': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\unordered_set(24,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,53): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,50): error C2039: 'any': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\unordered_set(24,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,53): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,2): error C2535: 'IniProperty::IniProperty(const std::string &,const int)': member function already defined or declared
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,2): message : see declaration of 'IniProperty::IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(60,7): error C2039: 'any': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\unordered_set(24,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(60,11): error C3646: 'Data': unknown override specifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(60,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(43,27): error C3861: 'Data': identifier not found
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(41,5): message : This diagnostic occurred in the compiler generated function 'T *IniProperty::Get(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(43,27): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(41,5): message : This diagnostic occurred in the compiler generated function 'T *IniProperty::Get(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(49,33): error C3861: 'Data': identifier not found
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(47,11): message : This diagnostic occurred in the compiler generated function 'const T *IniProperty::GetConst(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(49,33): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(47,11): message : This diagnostic occurred in the compiler generated function 'const T *IniProperty::GetConst(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(21,10): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(21,5): error C2614: 'IniProperty': illegal member initialization: 'Data' is not a base or member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(28,10): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(28,5): error C2614: 'IniProperty': illegal member initialization: 'Data' is not a base or member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(35,5): error C2614: 'IniProperty': illegal member initialization: 'Data' is not a base or member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,26): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,38): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,42): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,23): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,35): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,39): error C2143: syntax error: missing ';' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,39): error C7524: 'inline' specifier cannot appear on a block-scope declaration or non-static data member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,51): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,38): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,50): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,54): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,54): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,16): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,28): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,33): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,33): error C3646: 'FilePath': unknown override specifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,33): error C2086: 'const int IniReader::path': redefinition
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(8,33): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(8,45): error C2039: 'path': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\algorithm(76,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(8,49): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(8,49): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(9,9): error C2065: 'File': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(10,13): error C2065: 'File': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(11,1): error C2789: 'IniReader::path': an object of const-qualified type must be initialized
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,39): message : see declaration of 'IniReader::path'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(9,8): error C2512: 'IniData::IniData': no appropriate default constructor available
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(9,8): message : while trying to match the argument list '()'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(10,4): error C2614: 'IniReader': illegal member initialization: 'FilePath' is not a base or member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(12,29): error C2065: 'File': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(45,14): error C2039: 'starts_with': is not a member of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xstring(5300,29): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(45,39): error C2039: 'ends_with': is not a member of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xstring(5300,29): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(92,12): error C2039: 'Data': is not a member of 'IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(17,8): message : see declaration of 'IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(98,12): error C2039: 'Data': is not a member of 'IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(17,8): message : see declaration of 'IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(104,22): error C2079: 'stream' uses undefined class 'std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(104,28): error C2440: 'initializing': cannot convert from 'const _Ty2' to 'int'
+          with
+          [
+              _Ty2=std::string
+          ]
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(104,28): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(105,10): error C2297: '>>': not valid as right operand has type 'float'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(105,10): warning C4552: '>>': result of expression not used
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(106,12): error C2039: 'Data': is not a member of 'IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(17,8): message : see declaration of 'IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(111,12): error C2039: 'Data': is not a member of 'IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(17,8): message : see declaration of 'IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(115,12): error C2039: 'Data': is not a member of 'IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(17,8): message : see declaration of 'IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(130,15): error C2039: 'ends_with': is not a member of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xstring(5300,29): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(195,56): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(195,68): error C2039: 'path': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\algorithm(76,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(195,72): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(195,72): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp(197,23): error C2065: 'File': undeclared identifier
+  DatabaseController.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\filesystem(13): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(10,32): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(10,44): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\predefined C++ types (compiler internal)(343,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(10,20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(10,48): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(21,13): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(21,25): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\predefined C++ types (compiler internal)(343,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(21,30): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(21,30): error C3646: 'File': unknown override specifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\External Libraries\SQLite\sqlite3.h(272,31): warning C4099: 'sqlite3': type name first seen using 'class' now seen using 'struct'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(4,7): message : see declaration of 'sqlite3'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\Source\DatabaseController.cpp(5,51): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\Source\DatabaseController.cpp(5,63): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\predefined C++ types (compiler internal)(343,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\Source\DatabaseController.cpp(5,67): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\Source\DatabaseController.cpp(5,67): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\Source\DatabaseController.cpp(6,9): error C2065: 'File': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\Source\DatabaseController.cpp(7,1): error C2789: 'DatabaseController::path': an object of const-qualified type must be initialized
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(21,30): message : see declaration of 'DatabaseController::path'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\Source\DatabaseController.cpp(6,4): error C2614: 'DatabaseController': illegal member initialization: 'File' is not a base or member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\Source\DatabaseController.cpp(9,15): error C2065: 'File': undeclared identifier
+  Main.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\any(13): warning STL4038: The contents of <any> are available only with C++17 or later.
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,50): error C2039: 'any': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\unordered_set(24,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,53): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,50): error C2039: 'any': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\unordered_set(24,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,53): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,2): error C2535: 'IniProperty::IniProperty(const std::string &,const int)': member function already defined or declared
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,2): message : see declaration of 'IniProperty::IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(60,7): error C2039: 'any': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\unordered_set(24,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(60,11): error C3646: 'Data': unknown override specifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(60,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(43,27): error C3861: 'Data': identifier not found
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(41,5): message : This diagnostic occurred in the compiler generated function 'T *IniProperty::Get(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(43,27): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(41,5): message : This diagnostic occurred in the compiler generated function 'T *IniProperty::Get(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(49,33): error C3861: 'Data': identifier not found
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(47,11): message : This diagnostic occurred in the compiler generated function 'const T *IniProperty::GetConst(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(49,33): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(47,11): message : This diagnostic occurred in the compiler generated function 'const T *IniProperty::GetConst(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(21,10): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(21,5): error C2614: 'IniProperty': illegal member initialization: 'Data' is not a base or member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(28,10): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(28,5): error C2614: 'IniProperty': illegal member initialization: 'Data' is not a base or member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(35,5): error C2614: 'IniProperty': illegal member initialization: 'Data' is not a base or member
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\filesystem(13): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,26): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,38): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,42): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,23): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,35): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,39): error C2143: syntax error: missing ';' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,39): error C7524: 'inline' specifier cannot appear on a block-scope declaration or non-static data member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,51): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,38): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,50): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,54): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,54): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,16): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,28): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,33): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,33): error C3646: 'FilePath': unknown override specifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,33): error C2086: 'const int IniReader::path': redefinition
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(10,32): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(10,44): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(10,20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(10,48): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(21,13): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(21,25): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(21,30): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Database\DatabaseController.h(21,30): error C3646: 'File': unknown override specifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(16,34): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(16,46): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(16,50): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(16,50): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(17,7): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(17,19): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(17,24): error C3646: 'GetIniPath': unknown override specifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(17,34): error C2059: syntax error: '('
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(17,36): error C2238: unexpected token(s) preceding ';'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(14,6): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(14,18): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(14,33): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(14,23): error C2146: syntax error: missing ';' before identifier 'GetExePath'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(15,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(15,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(30,2): error C2039: 'format': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(30,2): error C3861: 'format': identifier not found
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(31,2): error C2039: 'format': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(31,2): error C3861: 'format': identifier not found
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(32,2): error C2039: 'format': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Main.cpp(32,2): error C3861: 'format': identifier not found
+  Application.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\any(13): warning STL4038: The contents of <any> are available only with C++17 or later.
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,50): error C2039: 'any': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\string(24,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,53): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,50): error C2039: 'any': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\string(24,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,53): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(26,2): error C2535: 'IniProperty::IniProperty(const std::string &,const int)': member function already defined or declared
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(19,2): message : see declaration of 'IniProperty::IniProperty'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(60,7): error C2039: 'any': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\string(24,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(60,11): error C3646: 'Data': unknown override specifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(60,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(43,27): error C3861: 'Data': identifier not found
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(41,5): message : This diagnostic occurred in the compiler generated function 'T *IniProperty::Get(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(43,27): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(41,5): message : This diagnostic occurred in the compiler generated function 'T *IniProperty::Get(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(49,33): error C3861: 'Data': identifier not found
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(47,11): message : This diagnostic occurred in the compiler generated function 'const T *IniProperty::GetConst(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(49,33): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(47,11): message : This diagnostic occurred in the compiler generated function 'const T *IniProperty::GetConst(void) const'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(21,10): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(21,5): error C2614: 'IniProperty': illegal member initialization: 'Data' is not a base or member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(28,10): error C2065: 'Data': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(28,5): error C2614: 'IniProperty': illegal member initialization: 'Data' is not a base or member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniSection.h(35,5): error C2614: 'IniProperty': illegal member initialization: 'Data' is not a base or member
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\filesystem(13): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(16,34): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(16,46): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(16,50): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(16,50): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(17,7): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(17,19): error C2039: 'path': is not a member of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(7,11): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(17,24): error C3646: 'GetIniPath': unknown override specifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(17,34): error C2059: syntax error: '('
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(17,36): error C2238: unexpected token(s) preceding ';'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,26): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,38): error C2039: 'path': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\map(25,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(28,42): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,23): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,35): error C2039: 'path': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\map(25,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,39): error C2143: syntax error: missing ';' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,39): error C7524: 'inline' specifier cannot appear on a block-scope declaration or non-static data member
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(173,51): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,38): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,50): error C2039: 'path': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\map(25,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,54): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(197,54): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,16): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,28): error C2039: 'path': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\map(25,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,33): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,33): error C3646: 'FilePath': unknown override specifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h(205,33): error C2086: 'const int IniReader::path': redefinition
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(9,30): error C3861: 'GetIniPath': identifier not found
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(9,15): error C2512: 'IniData': no appropriate default constructor available
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\PersistanceLayer\Config\Initialization\IniData.h(19,8): message : see declaration of 'IniData'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(12,46): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(12,58): error C2039: 'path': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\iostream(19,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(12,62): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(12,62): error C2143: syntax error: missing ',' before '&'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(15,19): error C2065: 'File': undeclared identifier
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(18,21): error C2039: 'format': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\iostream(19,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(18,27): error C3861: 'format': identifier not found
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(24,6): error C3083: 'filesystem': the symbol to the left of a '::' must be a type
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(24,18): error C2039: 'path': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\iostream(19,1): message : see declaration of 'std'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(24,36): error C2039: 'GetIniPath': is not a member of 'Application'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Application.h(6,7): message : see declaration of 'Application'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(24,46): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(24,46): error C2146: syntax error: missing ';' before identifier 'GetIniPath'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(25,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp(25,1): error C2447: '{': missing function header (old-style formal list?)

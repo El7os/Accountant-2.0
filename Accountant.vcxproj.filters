@@ -33,6 +33,9 @@
     <ClCompile Include="PersistanceLayer\Database\Source\DatabaseController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PersistanceLayer\Database\Source\UserDatabaseController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniData.h">
@@ -54,6 +57,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PersistanceLayer\Database\DatabaseController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="External Libraries\Debug\Macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PersistanceLayer\Database\UserDatabaseController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -26,8 +26,6 @@ std::filesystem::path GetExePath()
 
 int main()
 {
-	auto Path = GetExePath() / "Test_Database.sqlite";
-	DatabaseController Controller(Path);
-	std::cout << Path << std::endl;
+	DatabaseController(GetExePath() / "Source.db");
 	return 0;
 }
