@@ -65,5 +65,8 @@
     <ClInclude Include="PersistanceLayer\Database\UserDatabaseController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="External Libraries\Time\Time.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

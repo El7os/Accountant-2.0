@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="External Libraries\Debug\Macros.h" />
+    <ClInclude Include="External Libraries\Time\Time.h" />
     <ClInclude Include="PersistanceLayer\Config\Initialization\External Libraries\INIReader\IniReader.h" />
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniData.h" />
     <ClInclude Include="PersistanceLayer\Config\Initialization\IniSection.h" />

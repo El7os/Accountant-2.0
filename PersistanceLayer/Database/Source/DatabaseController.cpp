@@ -1,22 +1,17 @@
 #include "..\DatabaseController.h"
 #include "..\..\..\External Libraries\Debug\Macros.h"
 
-DatabaseController::DatabaseController(const std::filesystem::path& File)
+
+Database::DatabaseController::DatabaseController(const std::filesystem::path& File)
 	: File(File)
 	, ConnectionFlag(-1)
 {
-	SqliteRowSpec Row1{ "Name",Types::Text,true,true};
-	SqliteRowSpec Row2{ "Id",Types::Integer};
-	SqliteRowSpec Row3{ "Surname",Types::Numeric,true,true};
-	SqliteRowSpec Row4{ "Salary",Types::Real,true,false};
-	SqliteRowSpec Row5{ "Exp",Types::Blob,false,true};
 	StartConnection();
-	std::vector<SqliteRowSpec> Rows{ Row1, Row2, Row3, Row4, Row5 };
-	CreateTable("Employers", Rows);
+	GetTable("Employers");
 	TerminateConnection();
 }
 
-void DatabaseController::StartConnection(int Flag)
+void Database::DatabaseController::StartConnection(int Flag)
 {
 	if (IsThereAConnection())
 	{
@@ -31,13 +26,11 @@ void DatabaseController::StartConnection(int Flag)
 		ConnectionFlag = Flag;
 	}
 	else
-	{
 		LOG(Error, "Database connection attempty failed\nAttempted file {}\nError code {}", File.string(), ErrorCode);
-	}
 	
 }
 
-void DatabaseController::TerminateConnection()
+void Database::DatabaseController::TerminateConnection()
 {
 	if (!IsThereAConnection())
 	{
@@ -45,75 +38,71 @@ void DatabaseController::TerminateConnection()
 		return;
 	}
 	const int ErrorCode = sqlite3_close(DbConnection);
+
 	if (ErrorCode == SQLITE_OK)
-	{
-		LOG(Display, "Database connection has been terminated successfully ({})", File.filename().string());
-	}
+		LOG(Display, "Database connection has been terminated successfully ({})", File.filename().string())
 	else
-	{
 		LOG(Error, "An error occured while terminating the connection with the database ({})\nError Code {}", File.filename().string(), ErrorCode);
-	}
 }
 
-void DatabaseController::ChangeTargetFile(const std::filesystem::path& NewFile)
+void Database::DatabaseController::CreateTable(const std::string& Title, const std::initializer_list<ColumnSpec>& Columns)
 {
-	if (DbConnection)
-	{
-		LOG(Error, "Target database file couldn't be changed, still there is a connection with previous file. Terminate the connection first ({})", File.filename().string());
-		return;
-	}
+	const std::string& SqlCommand = ConstructTableCreationCommand(Title, Columns);
+	char* ErrorMessage;
+	const int ErrorCode = sqlite3_exec(DbConnection, SqlCommand.c_str(), nullptr, nullptr, &ErrorMessage);
 
-	DbConnection = nullptr;
-	ConnectionFlag = -1;
-	File = NewFile;
+	if (ErrorMessage)
+		LOG(Warning, "An error occured while creating a table in {}\n\t      Error Code : {}\n\t      Error Message : {}", File.filename().string(), ErrorCode, ErrorMessage)
+	else
+		LOG(Display, "Table '{}' is successfully created in {}", Title, File.filename().string());
 }
 
-void DatabaseController::CreateTable(const std::string& Title, const std::vector<SqliteRowSpec>& Rows)
+std::string Database::DatabaseController::ConstructTableCreationCommand(const std::string& TableName, const std::initializer_list<ColumnSpec>& Columns)
 {
-	std::string SqlCommand = std::format("CREATE TABLE {}(",Title);
+	std::string SqlCommand = std::format("CREATE TABLE {}(", TableName);
 	std::string PrimaryKeys = "";
 	bool AutomationFlag = false;
-	for (const SqliteRowSpec& RowSpec : Rows)
+	for (const ColumnSpec& ColumnSpec : Columns)
 	{
-		std::string Row = RowSpec.Title;
-		switch (RowSpec.Type)
+		std::string Column = ColumnSpec.Title;
+		switch (ColumnSpec.Type)
 		{
 		case Types::Integer:
-			Row += " INTEGER";
+			Column += " INTEGER";
 			break;
 
 		case Types::Text:
-			Row += " TEXT";
+			Column += " TEXT";
 			break;
 
 		case Types::Blob:
-			Row += " BLOB";
+			Column += " BLOB";
 			break;
 
 		case Types::Real:
-			Row += " REAL";
+			Column += " REAL";
 			break;
 
 		case Types::Numeric:
-			Row += " NUMERIC";
+			Column += " NUMERIC";
 			break;
 		default:
 			break;
 		}
-		if (RowSpec.NotNull)
-			Row += " NOT NULL";
-		if (RowSpec.Unique)
-			Row += " UNIQUE";
-		Row += ",";
-		SqlCommand += Row;
-		if (RowSpec.AutoIncrement)
+		if (ColumnSpec.NotNull)
+			Column += " NOT NULL";
+		if (ColumnSpec.Unique)
+			Column += " UNIQUE";
+		Column += ",";
+		SqlCommand += Column;
+		if (ColumnSpec.AutoIncrement)
 		{
-			PrimaryKeys = std::format("PRIMARY KEY({} AUTOINCREMENT));",RowSpec.Title);
+			PrimaryKeys = std::format("PRIMARY KEY({} AUTOINCREMENT));", ColumnSpec.Title);
 			AutomationFlag = true;
 		}
-		else if (RowSpec.PrimaryKey && !AutomationFlag)
+		else if (ColumnSpec.PrimaryKey && !AutomationFlag)
 		{
-			PrimaryKeys += RowSpec.Title + ",";
+			PrimaryKeys += ColumnSpec.Title + ",";
 		}
 
 	}
@@ -132,18 +121,155 @@ void DatabaseController::CreateTable(const std::string& Title, const std::vector
 			SqlCommand += std::format("PRIMARY KEY({}));", PrimaryKeys);
 		}
 	}
-
-	char* ErrorMessage;
-	const int ErrorCode = sqlite3_exec(DbConnection, SqlCommand.c_str(), nullptr, nullptr, &ErrorMessage);
-	if (ErrorMessage)
-	{
-		LOG(Warning, "An error occured while creating a table in {}\n\t      Error Code : {}\n\t      Error Message : {}", File.filename().string(), ErrorCode, ErrorMessage);
-	}
-	else
-	{
-		LOG(Display, "Table '{}' is successfully created in {}", Title, File.filename().string());
-	}
+	return SqlCommand;
 }
 
-bool DatabaseController::IsThereAConnection() { return DbConnection; }
+Database::Table Database::DatabaseController::GetTable(const std::string& TableName, const std::vector<Types>& TableSignature)
+{
+	sqlite3_stmt* Statement = nullptr;
 
+	const std::string SqliteCommand = ConstructQueryCommand(TableName);
+	const int ErrorCode = sqlite3_prepare_v2(DbConnection, SqliteCommand.c_str(), (17 + TableName.size()) * sizeof(char), &Statement, nullptr);
+
+	Table ConstructionTable(TableSignature);
+
+	if (ErrorCode == SQLITE_OK)
+	{
+		const unsigned long int ColumnCount = sqlite3_column_count(Statement) > TableSignature.size() ? TableSignature.size() : sqlite3_column_count(Statement);
+
+		while (sqlite3_step(Statement) == 100)
+			ConstructionTable.Rows.push_back(std::move(ConstructTableLineWithSignature(Statement, TableSignature, ColumnCount)));
+
+		LOG(Display, "{} table is fetched succesfully ({})", TableName, File.filename().string());
+	}
+	else
+		LOG(Warning, "An error occured {} while fetching {} table in {} ", ErrorCode, TableName, File.filename().string());
+	sqlite3_finalize(Statement);
+	
+	return ConstructionTable;
+}
+
+Database::Table Database::DatabaseController::GetTable(const std::string& TableName)
+{
+	sqlite3_stmt* Statement = nullptr;
+
+	const std::string SqliteCommand = ConstructQueryCommand(TableName);
+	const int ErrorCode = sqlite3_prepare_v2(DbConnection, SqliteCommand.c_str(), (17 + TableName.size()) * sizeof(char), &Statement, nullptr);
+
+	Table ConstructionTable;
+
+	if (ErrorCode == SQLITE_OK)
+	{
+		const unsigned int ColumnCount = sqlite3_column_count(Statement);
+		const std::vector<SupportedTypes>& Signature = ExtractSignature(Statement);
+		ConstructionTable.Signature = Signature;
+		
+		while (sqlite3_step(Statement) == 100)
+			ConstructionTable.Rows.push_back(std::move(ConstructTableLineWithSignature(Statement, Signature, ColumnCount)));
+		LOG(Display, "{} table is fetched succesfully ({})", TableName, File.filename().string());
+	}
+	else
+		LOG(Warning, "An error occured {} while fetching {} table in {} ", ErrorCode, TableName, File.filename().string());
+	sqlite3_finalize(Statement);
+	return ConstructionTable;
+	
+}
+
+Database::TableLine Database::DatabaseController::ConstructTableLineWithSignature(sqlite3_stmt* Statement, const std::vector<SupportedTypes>& Signature)
+{
+	const unsigned long int ColumnCount = sqlite3_column_count(Statement) > Signature.size() ? Signature.size() : sqlite3_column_count(Statement);
+	return ConstructTableLineWithSignature(Statement, Signature, ColumnCount);
+}
+
+Database::TableLine Database::DatabaseController::ConstructTableLineWithSignature(sqlite3_stmt* Statement, const std::vector<SupportedTypes>& Signature, unsigned long int ColumnCount)
+{
+	
+	TableLine Line;
+	Line.Contents.resize(ColumnCount);
+
+	for (unsigned long int ColumnIndex = 0; ColumnIndex < ColumnCount; ++ColumnIndex)
+	{
+		switch (Signature[ColumnIndex])
+		{
+		case Types::Integer:
+			Line.Contents[ColumnIndex] = sqlite3_column_int(Statement, ColumnIndex);
+			break;
+		case Types::Real:
+			Line.Contents[ColumnIndex] = sqlite3_column_double(Statement, ColumnIndex);
+			break;
+		case Types::Text:
+			Line.Contents[ColumnIndex] = sqlite3_column_text(Statement, ColumnIndex);
+			break;
+		case Types::Blob:
+			Line.Contents[ColumnIndex] = sqlite3_column_blob(Statement, ColumnIndex);
+			break;
+		case Types::Numeric:
+			Line.Contents[ColumnIndex] = sqlite3_column_text(Statement, ColumnIndex);
+			break;
+		default:
+			break;
+		}
+	}
+	Line.Contents.shrink_to_fit();
+	return Line;
+}
+
+std::string Database::DatabaseController::ConstructQueryCommand(const std::string& TableName, const std::vector<std::string>& TargetColumns, const std::string& Condition)
+{
+	std::string SelectPhrase = "SELECT ";
+	if (TargetColumns.size())
+	{
+		const unsigned int TargetColumnCount = TargetColumns.size();
+		for (int i = 0; i < TargetColumnCount - 1; ++i)
+			SelectPhrase += TargetColumns[i] + ", ";
+		SelectPhrase += TargetColumns[TargetColumnCount - 1];
+	}
+	else
+		SelectPhrase += "* ";
+	
+	std::string ConditionPhrase = "";
+	if (!Condition.empty())
+		ConditionPhrase += "WHERE " + Condition;
+
+	return std::format("{} FROM {} {}", SelectPhrase, TableName, ConditionPhrase);
+}
+
+bool Database::DatabaseController::IsThereAConnection() { return DbConnection; }
+
+std::vector<Database::SupportedTypes> Database::DatabaseController::ExtractSignature(sqlite3_stmt* Statement)
+{
+	const unsigned long int ColumnCount = sqlite3_column_count(Statement);
+
+	std::vector<SupportedTypes> Signature;
+	Signature.resize(ColumnCount);
+
+	for (unsigned long int ColumnIndex = 0; ColumnIndex < ColumnCount; ++ColumnIndex)
+	{
+		switch (sqlite3_column_type(Statement,ColumnIndex))
+		{
+		case SQLITE_INTEGER:
+			Signature[ColumnIndex] = SupportedTypes::Integer;
+			break;
+
+		case SQLITE_FLOAT:
+			Signature[ColumnIndex] = SupportedTypes::Real;
+			break;
+
+		case SQLITE_BLOB:
+			Signature[ColumnIndex] = SupportedTypes::Blob;
+			break;
+
+		case SQLITE_TEXT:
+			Signature[ColumnIndex] = SupportedTypes::Text;
+			break;
+
+		case SQLITE_NULL:
+			Signature[ColumnIndex] = SupportedTypes::Null;
+			break;
+		default:
+			break;
+		}
+	}
+	Signature.shrink_to_fit();
+	return Signature;
+}

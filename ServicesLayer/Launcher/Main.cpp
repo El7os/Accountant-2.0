@@ -14,7 +14,7 @@ std::filesystem::path GetExePath()
 {
 	std::filesystem::path Directory;
 #ifdef _WIN32
-	wchar_t Buffer[MAX_PATH];
+	wchar_t Buffer[2* MAX_PATH];
 	GetModuleFileName(NULL, Buffer, sizeof(Buffer));
 	Directory = std::filesystem::path(Buffer);
 #endif // _WIN32
@@ -26,6 +26,6 @@ std::filesystem::path GetExePath()
 
 int main()
 {
-	DatabaseController(GetExePath() / "Source.db");
+	Database::DatabaseController(GetExePath() / "Source.db");
 	return 0;
 }

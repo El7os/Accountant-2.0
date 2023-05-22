@@ -5,31 +5,24 @@
 #include <vector>
 
 
-class UserDatabaseController final : public DatabaseController
+
+class UserDatabaseController final : public Database::DatabaseController
 {
-private:
-
-	struct DatabaseLine
+public:
+	
+	struct TableLine
 	{
-		struct
-		{
-			uint8_t Hour : 5;
-			uint8_t Minute : 6;
-			uint8_t Day : 5;
-			uint8_t Month : 4;
-			int Year;
-		}LastEditTime;
-
 		std::string Title;
 		std::string Content;
+		Time CreationTime;
+		Time LastEditTime;
 	};
 
 
+	
 
-public:
+	
+private:
 
-
-
-	void CreateTable();
 
 };
