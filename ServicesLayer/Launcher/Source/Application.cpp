@@ -7,6 +7,7 @@
 Application::Application()
 {
 	IniData Data = GetIniConfig(GetIniPath());
+	
 }
 
 IniData Application::GetIniConfig(const std::filesystem::path& File)
