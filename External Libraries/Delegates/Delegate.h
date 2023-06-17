@@ -20,7 +20,7 @@
 template<class Class, typename ...Args>
 class SecureMulticastDelegate final
 {
-	typename Class;
+	class Class;
 public:
 
 	SecureMulticastDelegate() = default;
@@ -108,6 +108,7 @@ private:
 template<class Class, typename ReturnType, typename ...Args>
 class SecureDelegate final
 {
+	class Class;
 public:
 
 	SecureDelegate() = default;

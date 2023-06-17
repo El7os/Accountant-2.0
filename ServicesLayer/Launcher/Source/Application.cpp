@@ -10,6 +10,15 @@ Application::Application()
 	
 }
 
+bool Application::Run()
+{
+	IniData Data = GetIniConfig(GetIniPath());
+
+	//OnApplicationStart.Broadcast();
+
+	return true;
+}
+
 IniData Application::GetIniConfig(const std::filesystem::path& File)
 {
 	// To Do : Handle the case where the readers fail in its mission.

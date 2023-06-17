@@ -1,1 +1,2 @@
 C:\Users\Pro_y\Documents\GitHub\Accountant-2.0\x64\Debug\Accountant.exe
+D:\Github\Accountant-2.0\x64\Debug\Accountant.exe

@@ -1,14 +1,12 @@
 #include "..\DatabaseController.h"
 #include "..\..\..\External Libraries\Debug\Macros.h"
+#include <string>
 
 
 Database::DatabaseController::DatabaseController(const std::filesystem::path& File)
 	: File(File)
 	, ConnectionFlag(-1)
 {
-	StartConnection();
-	GetTable("Employers");
-	TerminateConnection();
 }
 
 void Database::DatabaseController::StartConnection(int Flag)
@@ -143,7 +141,7 @@ Database::Table Database::DatabaseController::GetTable(const std::string& TableN
 		LOG(Display, "{} table is fetched succesfully ({})", TableName, File.filename().string());
 	}
 	else
-		LOG(Warning, "An error occured {} while fetching {} table in {} ", ErrorCode, TableName, File.filename().string());
+		LOG(Warning, "An error occured ({}) while fetching {} table in {} ", ErrorCode, TableName, File.filename().string());
 	sqlite3_finalize(Statement);
 	
 	return ConstructionTable;
@@ -153,7 +151,7 @@ Database::Table Database::DatabaseController::GetTable(const std::string& TableN
 {
 	sqlite3_stmt* Statement = nullptr;
 
-	const std::string SqliteCommand = ConstructQueryCommand(TableName);
+	const std::string& SqliteCommand = ConstructQueryCommand(TableName);
 	const int ErrorCode = sqlite3_prepare_v2(DbConnection, SqliteCommand.c_str(), (17 + TableName.size()) * sizeof(char), &Statement, nullptr);
 
 	Table ConstructionTable;
@@ -173,6 +171,11 @@ Database::Table Database::DatabaseController::GetTable(const std::string& TableN
 	sqlite3_finalize(Statement);
 	return ConstructionTable;
 	
+}
+
+Database::Table Database::DatabaseController::GetTable(const std::string& TableName, const std::initializer_list<Types>& TableSignature)
+{
+	return GetTable(TableName, std::vector<Types>(TableSignature));
 }
 
 Database::TableLine Database::DatabaseController::ConstructTableLineWithSignature(sqlite3_stmt* Statement, const std::vector<SupportedTypes>& Signature)
@@ -198,7 +201,7 @@ Database::TableLine Database::DatabaseController::ConstructTableLineWithSignatur
 			Line.Contents[ColumnIndex] = sqlite3_column_double(Statement, ColumnIndex);
 			break;
 		case Types::Text:
-			Line.Contents[ColumnIndex] = sqlite3_column_text(Statement, ColumnIndex);
+			Line.Contents[ColumnIndex] = std::string(reinterpret_cast<const char*>(sqlite3_column_text(Statement, ColumnIndex)));
 			break;
 		case Types::Blob:
 			Line.Contents[ColumnIndex] = sqlite3_column_blob(Statement, ColumnIndex);

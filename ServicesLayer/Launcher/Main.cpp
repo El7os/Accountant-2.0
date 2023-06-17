@@ -23,9 +23,23 @@ std::filesystem::path GetExePath()
 	return Directory;
 }
 
+using Types = Database::SupportedTypes;
+
 
 int main()
 {
-	Database::DatabaseController(GetExePath() / "Source.db");
+	Database::DatabaseController Base = Database::DatabaseController(GetExePath() / "Source.db");
+	Base.StartConnection();
+	const Database::Table& Table = Base.GetTable("Employers", {Types::Text, Types::Integer, Types::Numeric, Types::Real, Types::Blob});
+
+	for (const Database::TableLine& Content : Table.Rows)
+	{
+		LOG(Warning, "Line Content : {}", std::any_cast<std::string>(Content.Contents[0]));
+		
+	}
+	Base.TerminateConnection();
+
+
+
 	return 0;
 }

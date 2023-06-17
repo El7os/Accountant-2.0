@@ -14,7 +14,7 @@
     char Color;																															\
 	Color = !strcmp(#LogLevel,"Display") ? 10 : !strcmp(#LogLevel,"Error") ? 12 : 14;													\
 	SetConsoleTextAttribute(ConsoleHandler,Color);																						\
-	if (Color == 14 && strcmp(#LogLevel,"Warning"))																							\
+	if (Color == 14 && strcmp(#LogLevel,"Warning"))																						\
 	{																																	\
 		std::cout << std::format("\nInvalid Log Level Attempted ({})({})", __FILE__,__LINE__) << std::endl;								\
 		SetConsoleTextAttribute(ConsoleHandler, 15);																					\

@@ -8,10 +8,12 @@
 
 class Application final
 {
-	SECURE_MULTICAST_DELEGATE(NoParamMulticast, Application, void);
+	SECURE_MULTICAST_DELEGATE(NoParamMulticast, Application, );
 public:
 
 	Application();
+
+	bool Run();
 
 	NoParamMulticast OnApplicationStart;
 	NoParamMulticast OnApplicationEnd;
@@ -19,9 +21,9 @@ public:
 
 private:
 	
-
-
 	IniData GetIniConfig(const std::filesystem::path& File);
+
 	std::filesystem::path GetIniPath();
+
 
 };

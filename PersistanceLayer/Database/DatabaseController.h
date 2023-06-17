@@ -10,14 +10,14 @@
 namespace Database
 {
 	enum class SupportedTypes : uint8_t
-{
-	Integer,
-	Text,
-	Blob,
-	Real,
-	Null,
-	Numeric
-};
+	{
+		Integer = 0U,
+		Text,
+		Blob,
+		Real,
+		Null,
+		Numeric
+	};
 
 	struct ColumnSpec
 	{
@@ -87,6 +87,7 @@ namespace Database
 
 		Table GetTable(const std::string& TableName);
 		Table GetTable(const std::string& TableName, const std::vector<Types>& TableSignature);
+		Table GetTable(const std::string& TableName, const std::initializer_list<Types>& TableSignature);
 	protected:
 
 		TableLine ConstructTableLineWithSignature(sqlite3_stmt* Statement,const std::vector<SupportedTypes>& Signature);

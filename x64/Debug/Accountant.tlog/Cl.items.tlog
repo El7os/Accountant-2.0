@@ -1,0 +1,6 @@
+D:\Github\Accountant-2.0\PersistanceLayer\Config\Initialization\External Libraries\INIReader\Source\IniReader.cpp;D:\Github\Accountant-2.0\x64\Debug\IniReader.obj
+D:\Github\Accountant-2.0\PersistanceLayer\Database\External Libraries\SQLite\shell.c;D:\Github\Accountant-2.0\x64\Debug\shell.obj
+D:\Github\Accountant-2.0\PersistanceLayer\Database\External Libraries\SQLite\sqlite3.c;D:\Github\Accountant-2.0\x64\Debug\sqlite3.obj
+D:\Github\Accountant-2.0\PersistanceLayer\Database\Source\DatabaseController.cpp;D:\Github\Accountant-2.0\x64\Debug\DatabaseController.obj
+D:\Github\Accountant-2.0\ServicesLayer\Launcher\Main.cpp;D:\Github\Accountant-2.0\x64\Debug\Main.obj
+D:\Github\Accountant-2.0\ServicesLayer\Launcher\Source\Application.cpp;D:\Github\Accountant-2.0\x64\Debug\Application.obj
