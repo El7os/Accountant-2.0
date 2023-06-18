@@ -30,3 +30,9 @@
 #else
 #define LOG(LogLevel, TEXT, ...)
 #endif // 
+
+#ifdef DEBUG
+#define NOT_IMPLEMENTED(RetVal) LOG(Warning, "Not Implemented Yet ({}) ({})",__FUNCTION__,__LINE__) ; return RetVal;
+#else
+#define NOT_IMPLEMENTED(RetVal) 
+#endif // DEBUG

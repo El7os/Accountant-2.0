@@ -30,13 +30,34 @@ int main()
 {
 	Database::DatabaseController Base = Database::DatabaseController(GetExePath() / "Source.db");
 	Base.StartConnection();
-	const Database::Table& Table = Base.GetTable("Employers", {Types::Text, Types::Integer, Types::Numeric, Types::Real, Types::Blob});
+	
+	Database::ColumnSpec NameColumn = Database::ColumnSpec("Name", Types::Text, true, true);
+	Database::ColumnSpec SurnameColumn = Database::ColumnSpec("Surname", Types::Text, true, true);
+	Database::ColumnSpec IdColumn = Database::ColumnSpec("Id", Types::Integer, true, true,false,true);
+	Database::ColumnSpec ExperienceColumn = Database::ColumnSpec("Experience", Types::Real, true);
+	Base.CreateTable("Employees", std::vector<Database::ColumnSpec>({ NameColumn, SurnameColumn, IdColumn, ExperienceColumn }));
 
-	for (const Database::TableLine& Content : Table.Rows)
-	{
-		LOG(Warning, "Line Content : {}", std::any_cast<std::string>(Content.Contents[0]));
-		
-	}
+	Database::Table* Employees = Base.GetTable("Employees",
+		std::vector<Types>({Types::Text, Types::Text, Types::Integer, Types::Real})
+		,std::vector<std::string>({"Name", "Surname", "Id", "Experience"}));
+	
+	std::any Name = std::make_any<std::string>("John");
+	std::any Surname = std::make_any<std::string>("Doe");
+	std::any Id = std::make_any<int>(16);
+	std::any Id_1 = std::make_any<int>(17);
+	std::any Id_2 = std::make_any<int>(18);
+	std::any Id_3 = std::make_any<int>(19);
+	std::any Id_4 = std::make_any<int>(20);
+	std::any Experience = std::make_any<double>(1.5);
+
+	Database::TableLine Line = Database::TableLine({ Name, Surname, Id, Experience });
+	Database::TableLine Line_1 = Database::TableLine({ Name, Surname, Id_1, Experience });
+	Database::TableLine Line_2 = Database::TableLine({ Name, Surname, Id_2, Experience });
+	Database::TableLine Line_3 = Database::TableLine({ Name, Surname, Id_3, Experience });
+	Database::TableLine Line_4 = Database::TableLine({ Name, Surname, Id_4, Experience });
+
+	Base.InsertIntoTable(*Employees, std::vector<Database::TableLine>({ Line, Line_1, Line_2, Line_3, Line_4}));
+	
 	Base.TerminateConnection();
 
 
