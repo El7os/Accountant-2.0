@@ -11,6 +11,84 @@ Database::DatabaseController::DatabaseController(const path& File)
 	LOG(Display, "A database controller created and paired with file : {}", File.string());
 }
 
+void Database::DatabaseController::EditRow(Table& Table, const tuple<string, any, Types>& Indicator, const vector<tuple<string, any, Types>>& NewValues)
+{
+	sqlite3_stmt* Statement = nullptr;
+
+	const string& SqlCommand = ConstructUpdateRowCommand(Table, Indicator, NewValues);
+	const int ErrorCode = sqlite3_prepare_v2(DbConnection, SqlCommand.c_str(), SqlCommand.size() * sizeof(char), &Statement, nullptr);
+
+	LOG(Display, "{}", SqlCommand);
+	if (ErrorCode == SQLITE_OK)
+	{
+		const int StepResult = sqlite3_step(Statement);
+		if (StepResult == SQLITE_DONE)
+			LOG(Display, "A row is updated at table '{}' in '{}'", Table.Name, GetFileName())
+		else
+			LOG(Error,
+				"An error occured while updating a row at table '{}' in '{}'\n\tError Code : {}\n\tError Mesage : {}",
+				Table.Name,
+				GetFileName(),
+				StepResult,
+				sqlite3_errmsg(DbConnection));
+	}
+	else
+		LOG(Error,
+			"An error occured while updating a row at table '{}' in '{}'\n\tError Code : {}\n\tError Mesage : {}",
+			Table.Name,
+			GetFileName(),
+			ErrorCode,
+			sqlite3_errmsg(DbConnection));
+	sqlite3_finalize(Statement);
+}
+
+void Database::DatabaseController::RemoveRow(const Table& TargetTable, const string& Condition)
+{
+	sqlite3_stmt* Statement = nullptr;
+
+	const string& SqlCommand = ConstructDeleteRowCommand(TargetTable.Name, Condition);
+	const int ErrorCode = sqlite3_prepare_v2(DbConnection, SqlCommand.c_str(), SqlCommand.size() * sizeof(char), &Statement, nullptr);
+
+	if (ErrorCode == SQLITE_OK)
+	{
+		const int StepResult = sqlite3_step(Statement);
+		if (StepResult == SQLITE_DONE)
+			LOG(Display, "A row is removed from table '{}' in '{}'", TargetTable.Name, GetFileName())
+		else
+			LOG(Error,
+				"An error occured while removing a row from table '{}' in '{}'\n\tError Code : {}\n\tError Mesage : {}",
+				TargetTable.Name,
+				GetFileName(),
+				StepResult,
+				sqlite3_errmsg(DbConnection));
+
+	}
+	else
+		LOG(Warning,
+			"An error occured while removing a row from table '{}' in '{}'\n\tError Code : {}\n\tError Mesage : {}",
+			TargetTable.Name,
+			GetFileName(),
+			ErrorCode,
+			sqlite3_errmsg(DbConnection));
+	sqlite3_finalize(Statement);
+
+}
+
+void Database::DatabaseController::CreateTable(const string& Title, const vector<ColumnSpec>& Columns)
+{
+	const std::string& SqlCommand = ConstructTableCreationCommand(Title, Columns);
+	char* ErrorMessage;
+	const int ErrorCode = sqlite3_exec(DbConnection, SqlCommand.c_str(), nullptr, nullptr, &ErrorMessage);
+
+	if (ErrorMessage)
+		LOG(Warning, "An error occured while creating a table in {}\n\tError Code : {}\n\tError Message : {}",
+			GetFileName(),
+			ErrorCode,
+			ErrorMessage)
+	else
+		LOG(Display, "Table '{}' is successfully created in {}", Title, GetFileName());
+}
+
 void Database::DatabaseController::StartConnection(int Flag)
 {
 	if (IsThereAConnection())
@@ -31,39 +109,6 @@ void Database::DatabaseController::StartConnection(int Flag)
 			ErrorCode,
 			sqlite3_errmsg(DbConnection));
 	
-}
-
-void Database::DatabaseController::TerminateConnection()
-{
-	if (!IsThereAConnection())
-	{
-		LOG(Warning, "There is no connection to terminate {}","");
-		return;
-	}
-	const int ErrorCode = sqlite3_close(DbConnection);
-
-	if (ErrorCode == SQLITE_OK)
-		LOG(Display, "Database connection has been terminated successfully ({})", GetFileName())
-	else
-		LOG(Error,
-			"An error occured while terminating the connection with the database ({})\n\tError Code : {}\n\tError Message : {}", 
-			GetFileName(),
-			ErrorCode, sqlite3_errmsg(DbConnection));
-}
-
-void Database::DatabaseController::CreateTable(const string& Title, const vector<ColumnSpec>& Columns)
-{
-	const std::string& SqlCommand = ConstructTableCreationCommand(Title, Columns);
-	char* ErrorMessage;
-	const int ErrorCode = sqlite3_exec(DbConnection, SqlCommand.c_str(), nullptr, nullptr, &ErrorMessage);
-
-	if (ErrorMessage)
-		LOG(Warning, "An error occured while creating a table in {}\n\tError Code : {}\n\tError Message : {}",
-			GetFileName(),
-			ErrorCode,
-			ErrorMessage)
-	else
-		LOG(Display, "Table '{}' is successfully created in {}", Title, GetFileName());
 }
 
 void Database::DatabaseController::InsertIntoTable(const Table& TargetTable, const TableLine& LineToInsert)
@@ -127,28 +172,25 @@ void Database::DatabaseController::InsertIntoTable(const Table& TargetTable, con
 	sqlite3_finalize(Statement);
 }
 
-void Database::DatabaseController::EditRow(Table& Table, const tuple<string, any, Types>& Indicator, const vector<tuple<string, any, Types>>& NewValues)
-{
-	sqlite3_stmt* Statement = nullptr;
+bool Database::DatabaseController::IsThereAConnection() const { return DbConnection; }
 
-	const string& SqlCommand = ConstructUpdateRowCommand(Table, Indicator, NewValues);
-	const int ErrorCode = sqlite3_prepare_v2(DbConnection, SqlCommand.c_str(), SqlCommand.size() * sizeof(char), &Statement, nullptr);
+void Database::DatabaseController::TerminateConnection()
+{
+	if (!IsThereAConnection())
+	{
+		LOG(Warning, "There is no connection to terminate {}","");
+		return;
+	}
+	const int ErrorCode = sqlite3_close(DbConnection);
 
 	if (ErrorCode == SQLITE_OK)
-	{
-
-	}
+		LOG(Display, "Database connection has been terminated successfully ({})", GetFileName())
 	else
 		LOG(Error,
-			"An error occured while updating a row at table '{}' in '{}'\n\tError Code : {}\n\tError Mesage : {}",
-			Table.Name,
-			File.filename().string(),
-			ErrorCode,
-			sqlite3_errmsg(DbConnection));
-	sqlite3_finalize(Statement);
+			"An error occured while terminating the connection with the database ({})\n\tError Code : {}\n\tError Message : {}", 
+			GetFileName(),
+			ErrorCode, sqlite3_errmsg(DbConnection));
 }
-
-bool Database::DatabaseController::IsThereAConnection() const { return DbConnection; }
 
 std::string Database::DatabaseController::ConstructQueryCommand(const string& TableName, const vector<string>& TargetColumns, const string& Condition) const
 {
@@ -199,14 +241,32 @@ std::string Database::DatabaseController::ConstructInsertCommand(const Table& Ta
 	return InsertPhrase;
 }
 
+std::string Database::DatabaseController::ConstructDeleteRowCommand(const string& TableName, const string& Condition) const
+{
+	return "DELETE FROM " + TableName + " WHERE " + Condition + ";";
+}
+
 std::string Database::DatabaseController::ConstructUpdateRowCommand(Table& Table, const tuple<string, any, Types>& Indicator, const vector<tuple<string, any, Types>>& NewValues)
 {
-	NOT_IMPLEMENTED(string());
-	string UpdatePhrase = "UPDATE " + Table.Name + " ";
+	string UpdatePhrase = "UPDATE " + Table.Name + " SET ";
 
+	const size_t NewValueCount = NewValues.size();
+	const size_t SentinelIndex = NewValueCount - 1;
+	if (NewValueCount)
+	{
+		for (size_t Index = 0; Index < SentinelIndex; ++Index)
+		{
+			const auto& [ColumnName, Value, Type] = NewValues[Index];
+			UpdatePhrase += ColumnName + " = " + GetAsSqliteString(Value, Type) + ", ";
+		}
+	}
+	
+	const auto& [ColumnName, Value, Type] = NewValues[SentinelIndex];
+	UpdatePhrase += ColumnName + " = " + GetAsSqliteString(Value, Type);
 
+	UpdatePhrase += " WHERE " + get<0>(Indicator) + " = " + GetAsSqliteString(get<1>(Indicator), get<2>(Indicator)) + ";";
 
-	return string();
+	return UpdatePhrase;
 }
 
 std::string Database::DatabaseController::ConstructTableCreationCommand(const string& TableName, const vector<ColumnSpec>& Columns) const

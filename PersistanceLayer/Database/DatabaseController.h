@@ -119,20 +119,21 @@ namespace Database
 
 		DatabaseController(const path& File);
 
-		void StartConnection(int Flag = SQLITE_OPEN_READWRITE);
-		void TerminateConnection();
-
+		void EditRow(Table& Table, const tuple<string, any, Types>& Indicator, const vector<tuple<string, any, Types>>& NewValues);
+		void RemoveRow(const Table& TargetTable, const string& Condition);
 		void CreateTable(const string& Title, const vector<ColumnSpec>& Columns);
-
+		void StartConnection(int Flag = SQLITE_OPEN_READWRITE);
 		void InsertIntoTable(const Table& TargetTable, const TableLine& LineToInsert);
 		void InsertIntoTable(const Table& TargetTable, const vector<TableLine>& LinesToInsert);
+		void TerminateConnection();
 
-		void EditRow(Table& Table, const tuple<string, any, Types>& Indicator, const vector<tuple<string, any, Types>>& NewValues);
+
 		
 		inline bool IsThereAConnection() const;
 
 		string ConstructQueryCommand(const string& TableName, const vector<string>& TargetColumns = vector<string>(), const string& Condition = "") const;
 		string ConstructInsertCommand(const Table& Table, const TableLine& LineToAdd) const;
+		string ConstructDeleteRowCommand(const string& TableName, const string& Condition) const;
 		string ConstructUpdateRowCommand(Table& Table, const tuple<string, any, Types>& Indicator, const vector<tuple<string, any, Types>>& NewValues);
 		string ConstructTableCreationCommand(const string& TableName, const vector<ColumnSpec>& Columns) const;
 		string ConstructMultipleInsertCommand(const Table& Table, const vector<TableLine>& LinesToAdd) const;

@@ -28,37 +28,53 @@ using Types = Database::SupportedTypes;
 
 int main()
 {
-	Database::DatabaseController Base = Database::DatabaseController(GetExePath() / "Source.db");
-	Base.StartConnection();
-	
-	Database::ColumnSpec NameColumn = Database::ColumnSpec("Name", Types::Text, true, true);
-	Database::ColumnSpec SurnameColumn = Database::ColumnSpec("Surname", Types::Text, true, true);
-	Database::ColumnSpec IdColumn = Database::ColumnSpec("Id", Types::Integer, true, true,false,true);
-	Database::ColumnSpec ExperienceColumn = Database::ColumnSpec("Experience", Types::Real, true);
-	Base.CreateTable("Employees", std::vector<Database::ColumnSpec>({ NameColumn, SurnameColumn, IdColumn, ExperienceColumn }));
+	Database::DatabaseController Base (GetExePath() / "Database.db");
+	Base.StartConnection(SQLITE_OPEN_READWRITE);
 
-	Database::Table* Employees = Base.GetTable("Employees",
-		std::vector<Types>({Types::Text, Types::Text, Types::Integer, Types::Real})
-		,std::vector<std::string>({"Name", "Surname", "Id", "Experience"}));
-	
-	std::any Name = std::make_any<std::string>("John");
-	std::any Surname = std::make_any<std::string>("Doe");
-	std::any Id = std::make_any<int>(16);
-	std::any Id_1 = std::make_any<int>(17);
-	std::any Id_2 = std::make_any<int>(18);
-	std::any Id_3 = std::make_any<int>(19);
-	std::any Id_4 = std::make_any<int>(20);
-	std::any Experience = std::make_any<double>(1.5);
+	Database::ColumnSpec FirstColumn = { "ID",Types::Integer,true,true,false,true };
+	Database::ColumnSpec SecondColumn = { "Name", Types::Text };
+	Database::ColumnSpec ThirdColumn = {"Productivity", Types::Real};
 
-	Database::TableLine Line = Database::TableLine({ Name, Surname, Id, Experience });
-	Database::TableLine Line_1 = Database::TableLine({ Name, Surname, Id_1, Experience });
-	Database::TableLine Line_2 = Database::TableLine({ Name, Surname, Id_2, Experience });
-	Database::TableLine Line_3 = Database::TableLine({ Name, Surname, Id_3, Experience });
-	Database::TableLine Line_4 = Database::TableLine({ Name, Surname, Id_4, Experience });
-
-	Base.InsertIntoTable(*Employees, std::vector<Database::TableLine>({ Line, Line_1, Line_2, Line_3, Line_4}));
+	Base.CreateTable("Employers", std::vector<Database::ColumnSpec>({ FirstColumn, SecondColumn, ThirdColumn }));
+	Database::Table* Table = Base.GetTable("Employers", std::vector<Types>({ Types::Integer, Types::Text, Types::Real }), std::vector<std::string>({ "ID","Name","Productivity" }));
 	
+
+	Database::TableLine Line;
+	Line.Contents.push_back(std::make_any<int>(1));
+	Line.Contents.push_back(std::make_any<std::string>("Ion"));
+	Line.Contents.push_back(std::make_any<double>(0.5));
+
+	Database::TableLine Line2;
+	Line2.Contents.push_back(std::make_any<int>(2));
+	Line2.Contents.push_back(std::make_any<std::string>("Gheorghe"));
+	Line2.Contents.push_back(std::make_any<double>(0.7));
+
+	Database::TableLine Line3;
+	Line3.Contents.push_back(std::make_any<int>(3));
+	Line3.Contents.push_back(std::make_any<std::string>("Vasile"));
+	Line3.Contents.push_back(std::make_any<double>(0.9));
+
+	Database::TableLine Line4;
+	Line4.Contents.push_back(std::make_any<int>(4));
+	Line4.Contents.push_back(std::make_any<std::string>("Mihai"));
+	Line4.Contents.push_back(std::make_any<double>(0.8));
+
+	Base.InsertIntoTable(*Table, Line);
+	Base.InsertIntoTable(*Table, std::vector({Line2, Line3}));
+	Base.InsertIntoTable(*Table, Line4);
+
+	std::tuple<std::string, std::any, Types> WhereClause = { "ID", std::make_any<int>(1), Types::Integer };
+	std::tuple<std::string, std::any, Types> NewValue = { "Name", std::make_any<std::string>("Vasile"), Types::Text };
+	std::tuple<std::string, std::any, Types> NewValue2 = { "Productivity", std::make_any<double>(13.3f), Types::Real };
+
+
+	Base.EditRow(*Table, WhereClause, std::vector<std::tuple<std::string, std::any, Types>>({ NewValue, NewValue2 }));
+	Base.RemoveRow(*Table, "ID = 2");
+
 	Base.TerminateConnection();
+
+
+	
 
 
 
