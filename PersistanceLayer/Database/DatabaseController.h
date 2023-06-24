@@ -9,6 +9,12 @@
 
 namespace Database
 {
+	using string = std::string;
+	using std::vector;
+	using std::tuple;
+	using std::any;
+	using std::filesystem::path;
+
 	enum class SupportedTypes : uint8_t
 	{
 		Integer = 0U,
@@ -20,7 +26,7 @@ namespace Database
 	struct ColumnSpec
 	{
 		ColumnSpec(
-			const std::string& Title,
+			const string& Title,
 			SupportedTypes Type,
 			bool NotNull = false,
 			bool PrimaryKey = false,
@@ -35,7 +41,7 @@ namespace Database
 		{
 		}
 
-		std::string Title;
+		string Title;
 		SupportedTypes Type;
 		bool NotNull;
 		bool PrimaryKey;
@@ -48,27 +54,28 @@ namespace Database
 	{
 		TableLine() = default;
 
-		TableLine(const std::vector<std::any>& Contents)
+		TableLine(const vector<any>& Contents)
 			: Contents(Contents)
 		{
 		}
 
-		inline std::any& operator[](unsigned long int Index)
+		inline any& operator[](unsigned long int Index)
 		{
 			return Contents[Index];
 		}
 
-		inline const std::any& operator[](unsigned long int Index) const
+		inline const any& operator[](unsigned long int Index) const
 		{
 			return Contents[Index];
 		}
-		std::vector<std::any> Contents;
+
+		vector<any> Contents;
 	};
 
 	struct Table
 	{
 		
-		Table(const std::string& Name, const std::vector<SupportedTypes>& Signature, const std::vector<std::string>& ColumnNames)
+		Table(const string& Name, const vector<SupportedTypes>& Signature, const vector<string>& ColumnNames)
 			: Name(Name)
 			, Signature(Signature)
 			, ColumnNames(ColumnNames)
@@ -95,13 +102,13 @@ namespace Database
 			return Signature.size();
 		}
 
-		std::vector<std::string> ColumnNames;
+		vector<string> ColumnNames;
 
-		std::vector<SupportedTypes> Signature;
+		vector<SupportedTypes> Signature;
 
-		std::vector<TableLine> Rows;
+		vector<TableLine> Rows;
 
-		std::string Name;
+		string Name;
 	};
 
 	class DatabaseController
@@ -110,47 +117,50 @@ namespace Database
 
 		using Types = SupportedTypes;
 
-		DatabaseController(const std::filesystem::path& File);
+		DatabaseController(const path& File);
 
 		void StartConnection(int Flag = SQLITE_OPEN_READWRITE);
 		void TerminateConnection();
 
-		void CreateTable(const std::string& Title, const std::vector<ColumnSpec>& Columns);
-
-		inline bool IsThereAConnection() const;
-
-		std::string ConstructTableCreationCommand(const std::string& TableName, const std::vector<ColumnSpec>& Columns) const;
-		std::string ConstructQueryCommand(const std::string& TableName, const std::vector<std::string>& TargetColumns = std::vector<std::string>(), const std::string& Condition = "") const;
-		std::string ConstructInsertCommand(const Table& Table, const TableLine& LineToAdd) const;
-		std::string ConstructMultipleInsertCommand(const Table& Table, const std::vector<TableLine>& LinesToAdd) const;
-
-		Table* GetTable(const std::string& TableName);
-		Table* GetTable(const std::string& TableName, const std::vector<Types>& TableSignature);
-		Table* GetTable(const std::string& TableName, const std::vector<Types>& TableSignature, const std::vector<std::string>& ColumnNames);
+		void CreateTable(const string& Title, const vector<ColumnSpec>& Columns);
 
 		void InsertIntoTable(const Table& TargetTable, const TableLine& LineToInsert);
-		void InsertIntoTable(const Table& TargetTable, const std::vector<TableLine>& LinesToInsert);
+		void InsertIntoTable(const Table& TargetTable, const vector<TableLine>& LinesToInsert);
 
+		void EditRow(Table& Table, const tuple<string, any, Types>& Indicator, const vector<tuple<string, any, Types>>& NewValues);
+		
+		inline bool IsThereAConnection() const;
 
-		void EditRow(const std::string& TableName, const std::tuple<int, int, Types>, const std::any& Value);
-		void EditRows(const std::string& TableName, const std::vector<std::tuple<int, int, Types>>& Edits);
+		string ConstructQueryCommand(const string& TableName, const vector<string>& TargetColumns = vector<string>(), const string& Condition = "") const;
+		string ConstructInsertCommand(const Table& Table, const TableLine& LineToAdd) const;
+		string ConstructUpdateRowCommand(Table& Table, const tuple<string, any, Types>& Indicator, const vector<tuple<string, any, Types>>& NewValues);
+		string ConstructTableCreationCommand(const string& TableName, const vector<ColumnSpec>& Columns) const;
+		string ConstructMultipleInsertCommand(const Table& Table, const vector<TableLine>& LinesToAdd) const;
+
+		inline string GetFileName() const;
+
+		Table* GetTable(const string& TableName);
+		Table* GetTable(const string& TableName, const vector<Types>& TableSignature);
+		Table* GetTable(const string& TableName, const vector<Types>& TableSignature, const vector<string>& ColumnNames);
+
+		inline const path& GetPath() const;
 
 	protected:
 
-		TableLine ConstructTableLineWithSignature(sqlite3_stmt* Statement,const std::vector<SupportedTypes>& Signature);
-		TableLine ConstructTableLineWithSignature(sqlite3_stmt* Statement, const std::vector<SupportedTypes>& Signature, int ColumnCount);
+		TableLine ConstructTableLineWithSignature(sqlite3_stmt* Statement,const vector<SupportedTypes>& Signature);
+		TableLine ConstructTableLineWithSignature(sqlite3_stmt* Statement, const vector<SupportedTypes>& Signature, int ColumnCount);
 
-		std::vector<SupportedTypes> ExtractSignature(sqlite3_stmt* Statement);
-		std::vector<std::string> ExtractColumnNames(sqlite3_stmt* Statement);
+		vector<SupportedTypes> ExtractSignature(sqlite3_stmt* Statement);
+		vector<string> ExtractColumnNames(sqlite3_stmt* Statement);
+
+		inline string GetAsSqliteString(const any& Value, Types Type) const;
 
 		sqlite3* DbConnection = nullptr;
 		int ConnectionFlag;
-		const std::filesystem::path File;
-
-
+		const path File;
 	};
 
-	std::string GetSQLiteType(SupportedTypes Type);
+	inline std::string GetSQLiteType(SupportedTypes Type);
 }
 
 
